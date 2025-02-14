@@ -7,14 +7,14 @@ vector<int> sieveOfEratosthenes(int n)
     vector<int> smallestPrime;
     vector<int> primes;
 
-    //  for (int p = 2; p < n; p++) {
-    //     smallestPrime[p] = p;
-    //  }
+     for (int p = 2; p < n; p++) {
+        smallestPrime[p] = p;
+     }
 
     for (int p = 2; p * p <= n; p++) {
         if (isPrime[p]) {
             for (int i = p * p; i <= n; i += p) {
-                // smallestPrime[i] = p;
+                smallestPrime[i] = p;
                 isPrime[i] = false;
             }
         }
@@ -32,14 +32,14 @@ vector<int> sieveOfEratosthenes(int n)
 //--------------------------- 
 
 
-unordered_set<int> getPrimeFactors(int n){
-    unordered_set<int> factors;
-        while(n > 1) {
-            factors.insert(smallestPrime[n]);
-            n /= smallestPrime[n];
-        }
- return factors;
-}
+// unordered_set<int> getPrimeFactors(int n){
+//     unordered_set<int> factors;
+//         while(n > 1) {
+//             factors.insert(smallestPrime[n]);
+//             n /= smallestPrime[n];
+//         }
+//  return factors;
+// }
 
 
 //-----------------------------------------
