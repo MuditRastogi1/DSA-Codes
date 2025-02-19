@@ -44,7 +44,7 @@ class SegmentTreeLazy {
           // complete overlap 
           if(low >= l && high <= r) {
               lazy[ind] += val;
-            push(ind, low, high);
+              push(ind, low, high);
               return; 
           }
   
