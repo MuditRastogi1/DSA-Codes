@@ -34,7 +34,7 @@ class SegmentTreeLazy {
       void update(int ind, int low, int high, int l, int r, int val) { //range update (0,0,n-1,left,right,val)
           // update the previous remaining updates 
           // and propogate downwards 
-      push(ind,low,high);
+          push(ind,low,high);
    
           // no overlap 
           if(high < l or r < low) {
@@ -44,7 +44,7 @@ class SegmentTreeLazy {
           // complete overlap 
           if(low >= l && high <= r) {
               lazy[ind] += val;
-        push(ind, low, high);
+            push(ind, low, high);
               return; 
           }
   
@@ -64,10 +64,10 @@ class SegmentTreeLazy {
   
           int mid = (low + high)/2;
           if(index <= mid) {
-            update(2*ind + 1, low, mid, index, val);
+              update(2*ind + 1, low, mid, index, val);
           }
           else {
-           update(2*ind + 2, mid + 1, high, index, val);
+              update(2*ind + 2, mid + 1, high, index, val);
           }
           combine(ind);
       }
@@ -83,8 +83,8 @@ class SegmentTreeLazy {
   
           // complete overlap 
           if(low >= l && high <= r) {
-        return seg[ind]; 
-      }
+              return seg[ind]; 
+          }
    
       //partial overlap
           int mid = (low + high) >> 1; 
