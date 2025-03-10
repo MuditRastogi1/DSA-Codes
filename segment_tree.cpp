@@ -1,17 +1,15 @@
 #include<bits/stdc++.h>
 using namespace std;
  
-class SegmentTree
-{
+class SegmentTree {
   int len;
   vector<int> seg;
 
    void combine(int ind) { 
-		  seg[ind] = seg[2*ind+1] + seg[2*ind+2]; 
-	 }
+	   seg[ind] = seg[2*ind+1] + seg[2*ind+2]; 
+   }
    
-    void build(int ind, int low, int high, vector<int>& arr)
-    {
+    void build(int ind, int low, int high, vector<int>& arr) {
         if(low == high) {
             seg[ind] = arr[low];
             return;
@@ -22,8 +20,7 @@ class SegmentTree
       combine(ind);
     }
 
-    int query(int ind, int low, int high, int l, int r)
-    {
+    int query(int ind, int low, int high, int l, int r) {
       if(low > r || high < l)
         return 0;
                                   
@@ -36,17 +33,18 @@ class SegmentTree
       return left + right;
     }
 
-    void update(int ind, int low, int high, int index, int val)
-    {
+    void update(int ind, int low, int high, int index, int val) {
         if(low == high) {
             seg[ind] = val;
             return;
         }
         int mid = (low + high)/2;
-        if(index <= mid)
+        if(index <= mid) {
           update(2*ind+1,low,mid,index,val);
-        else
+	}
+        else {
          update(2*ind+2,mid+1,high,index,val);
+	}
         combine(ind);
     }
 
@@ -80,8 +78,8 @@ class SegmentTreeLazy {
 	vector<int> seg, lazy; 
 
   void combine(int ind) { 
-		seg[ind] = seg[2*ind+1] + seg[2*ind+2]; 
-	}
+	  seg[ind] = seg[2*ind+1] + seg[2*ind+2]; 
+  }
 
 	void push(int ind, int low, int high) {
 		if(lazy[ind] != 0) {
@@ -110,7 +108,7 @@ class SegmentTreeLazy {
 	void update(int ind, int low, int high, int l, int r, int val) { //range update (0,0,n-1,left,right,val)
 		// update the previous remaining updates 
 		// and propogate downwards 
-    push(ind,low,high);
+    		push(ind,low,high);
  
 		// no overlap 
 		if(high < l or r < low) {
@@ -120,7 +118,7 @@ class SegmentTreeLazy {
 		// complete overlap 
 		if(low>=l && high <= r) {
 			lazy[ind] += val;
-      push(ind,low,high);
+      			push(ind,low,high);
 			return; 
 		}
 
@@ -131,19 +129,19 @@ class SegmentTreeLazy {
 		combine(ind);
 	}
 
-	void update(int ind, int low, int high, int index, int val) //point update (0,0,n-1,index,val)
-    {
+	void update(int ind, int low, int high, int index, int val) { //point update (0,0,n-1,index,val)
         push(ind,low,high);
-        if(low == high)
-        {
+        if(low == high) {
             seg[ind] = val;
             return;
         }
         int mid = (low + high)/2;
-        if(index <= mid)
+        if(index <= mid) {
           update(2*ind+1,low,mid,index,val);
-        else
+        }       
+        else {
          update(2*ind+2,mid+1,high,index,val);
+        }	
         combine(ind);
     }
 
