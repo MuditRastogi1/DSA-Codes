@@ -1,3 +1,4 @@
+// adj[parent] = {child, weight}
 vector<int> dijkstra(int source, int n, vector<vector<int>>& adj) {
         priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
         vector<int> dist(n, 1e9);
