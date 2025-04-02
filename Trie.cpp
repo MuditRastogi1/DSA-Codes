@@ -1,8 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-class TrieNode
-{
+class TrieNode {
     public:
     TrieNode* child[26];
     bool flag;
