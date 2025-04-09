@@ -1,8 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-vector<int> sieveOfEratosthenes(int n) 
-{
+vector<int> sieveOfEratosthenes(int n) {
     vector<bool> isPrime(n + 1, true);
     vector<int> smallestPrime;
     vector<int> primes;
