@@ -14,20 +14,17 @@ class DSU {
         }
     }
 
-    void make_set(int v) 
-    {
+    void make_set(int v) {
         parent[v] = v;
         size[v] = 1;
     }
 
-    int find_parent(int v) 
-    {
+    int find_parent(int v) {
         if(v == parent[v]) return v;
         return parent[v] = find_parent(parent[v]);
     }
 
-    void Union(int a, int b)
-    {
+    void Union(int a, int b) {
         a = find_parent(a);
         b = find_parent(b);
     
