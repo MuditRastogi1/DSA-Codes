@@ -4,8 +4,7 @@ using namespace std;
 
 
     //without leading 0's
-    int solve(int i, int bound, int sum, string s, int min_sum, int max_sum, int dp[24][2][200])
-    {
+    int solve(int i, int bound, int sum, string s, int min_sum, int max_sum, int dp[24][2][200]) {
        if(i == s.length())  //check base condition here
         return (min_sum <= sum && sum <= max_sum);
 
@@ -22,8 +21,7 @@ using namespace std;
     
 
     //considering leading 0's (SHORTER VERSION)
-    int solve(int i, int bound, int isLeading0, string s, int dp[11][2][2])
-    {
+    int solve(int i, int bound, int isLeading0, string s, int dp[11][2][2]) {
        if(i == s.length()) {
         return !isLeading0;
        }
@@ -42,8 +40,7 @@ using namespace std;
     }
 
     //considering leading 0's (LONGER VERSION)
-    int solve(int i, int bound, int isLeading0, int even, int odd, string s, int dp[11][2][2][10][10][21], int rem, int k)
-    {
+    int solve(int i, int bound, int isLeading0, int even, int odd, string s, int dp[11][2][2][10][10][21], int rem, int k) {
        if(i == s.length()) {
         return (even == odd && rem == 0);
        }
