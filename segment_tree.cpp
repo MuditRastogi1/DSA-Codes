@@ -14,6 +14,7 @@ class SegmentTree {
             seg[ind] = arr[low];
             return;
         }
+     
         int mid = (low + high) / 2;
         build(2 * ind + 1, low, mid, arr);
         build(2 * ind + 2, mid + 1, high, arr);
@@ -21,11 +22,13 @@ class SegmentTree {
     }
 
     int query(int ind, int low, int high, int l, int r) {
-        if (low > r || high < l)
+        if(low > r || high < l) {
             return 0;
+        }
 
-        if (l <= low && high <= r)
+        if(l <= low && high <= r) {
             return seg[ind];
+        }
 
         int mid = (low + high) / 2;
         int left = query(2 * ind + 1, low, mid, l, r);
@@ -38,6 +41,7 @@ class SegmentTree {
             seg[ind] = val;
             return;
         }
+     
         int mid = (low + high) / 2;
         if(index <= mid) {
             update(2 * ind + 1, low, mid, index, val);
