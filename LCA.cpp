@@ -1,10 +1,10 @@
-class LCA {
+class Tree {
     vector<int> height, euler, first, segtree;
     vector<bool> visited;
     int n;
     
     public:
-    LCA(vector<vector<int>> &adj, int root = 0) {
+    Tree(vector<vector<int>> &adj, int root = 0) {
         n = adj.size();
         height.resize(n);
         first.resize(n);
